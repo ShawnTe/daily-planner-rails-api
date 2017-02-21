@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :users
   resources :brainjuices
   resources :todays
+  resources :todos
+
 end
