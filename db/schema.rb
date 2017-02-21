@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221004544) do
+ActiveRecord::Schema.define(version: 20170221010335) do
 
   create_table "brainjuices", force: :cascade do |t|
     t.string   "name"
     t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "todays", force: :cascade do |t|
+    t.integer  "brainjuice_id"
+    t.integer  "time_container"
+    t.date     "date"
+    t.string   "status"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["brainjuice_id"], name: "index_todays_on_brainjuice_id"
   end
 
   create_table "users", force: :cascade do |t|
