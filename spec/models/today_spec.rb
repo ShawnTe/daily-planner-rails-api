@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Today, type: :model do
-  it { should belong_to(:brainjuice) }
+  it { should have_many(:todos) }
+  
 end
