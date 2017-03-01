@@ -9,5 +9,6 @@ class CreateTodays < ActiveRecord::Migration[5.0]
     end
     add_index :todays, :status
     add_index :todays, :date
+    add_index :todays, :time_container
   end
 end
