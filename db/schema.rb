@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221020538) do
+ActiveRecord::Schema.define(version: 20170301001741) do
 
   create_table "brainjuices", force: :cascade do |t|
     t.string   "name"
     t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_brainjuices_on_name"
   end
 
   create_table "todays", force: :cascade do |t|
@@ -27,6 +28,8 @@ ActiveRecord::Schema.define(version: 20170221020538) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["brainjuice_id"], name: "index_todays_on_brainjuice_id"
+    t.index ["date"], name: "index_todays_on_date"
+    t.index ["status"], name: "index_todays_on_status"
   end
 
   create_table "todos", force: :cascade do |t|
@@ -38,7 +41,12 @@ ActiveRecord::Schema.define(version: 20170221020538) do
     t.integer  "brainjuice_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "today_id"
     t.index ["brainjuice_id"], name: "index_todos_on_brainjuice_id"
+    t.index ["status"], name: "index_todos_on_status"
+    t.index ["task"], name: "index_todos_on_task"
+    t.index ["time_estimate"], name: "index_todos_on_time_estimate"
+    t.index ["today_id"], name: "index_todos_on_today_id"
     t.index ["user_id"], name: "index_todos_on_user_id"
   end
 
@@ -49,6 +57,8 @@ ActiveRecord::Schema.define(version: 20170221020538) do
     t.string   "token"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name"
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 

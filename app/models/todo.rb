@@ -1,6 +1,7 @@
 class Todo < ApplicationRecord
   belongs_to :user
   belongs_to :brainjuice
+  belongs_to :today, optional: true
 
   validates :task, presence: true
   validates :time_estimate, presence: true
