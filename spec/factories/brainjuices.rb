@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :brainjuice do
-    status  'active' 
+    status  'active'
 
-    names = ["focus", "creative", "busy"]
-    name { names.sample }
+    name = ["focus", "creative", "busy"].sample
   end
 end
