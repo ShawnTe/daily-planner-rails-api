@@ -7,10 +7,8 @@ class TodosController < ApplicationController
   end
 
   def create
-
-    if @todo = Todo.create!(todo_params)
-      json_response(@todo, :created)
-    end
+    @todo = Todo.create!(todo_params)
+    json_response(@todo, :created)
   end
 
   def show

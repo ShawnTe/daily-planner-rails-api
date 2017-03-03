@@ -68,7 +68,7 @@ RSpec.describe 'Brainjuices API', type: :request do
       end
 
       it 'returns a validation failure message' do
-        expect(response.body).to match(/Validation failed: Name by can't be blank/)
+        expect(response.body).to match("Validation failed: Name can't be blank")
       end
     end
   end

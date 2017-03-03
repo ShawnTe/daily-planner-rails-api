@@ -1,9 +1,8 @@
 FactoryGirl.define do
   factory :today do
     date { Date.today }
-    status 'open' 
+    status 'open'
 
-    time_containers = [15, 30, 60, 120]
-    time_container { time_containers.sample }
+    time_container { [15, 30, 60, 120].sample }
   end
 end
