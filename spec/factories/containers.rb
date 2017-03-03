@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :today do
+  factory :container do
     date { Date.today }
     status 'open'
 

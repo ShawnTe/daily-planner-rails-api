@@ -29,7 +29,7 @@ class TodosController < ApplicationController
   private
 
     def todo_params
-      params.permit(:task, :details, :time_estimate, :status, :brainjuice_id, :user_id, :today_id)
+      params.permit(:task, :details, :time_estimate, :status, :brainjuice_id, :user_id, :container_id)
     end
 
     def set_todo

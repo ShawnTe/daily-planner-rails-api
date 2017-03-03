@@ -16,7 +16,7 @@ The learning objectives for this version include:
 2. Clean up Todos (doing anything here??)  
 3. Plan day  
   - Set Brainjuice session lengths  
-  - Assign Todos to Today by Brainjuice  
+  - Assign Todos to Container by Brainjuice  
     - receive error if too many  
     - unassign as needed  
 4. Get to work!  
@@ -32,18 +32,18 @@ The learning objectives for this version include:
 - User can edit Todo  
 - User can mark Todo complete  
 - User can delete Todo  
-- User can assign Todo for today  
-- User can un-assign Todo for today
+- User can assign Todo for container  
+- User can un-assign Todo for container
 - User can view Todos by Bj  
-- User can view Todos designated for today (?? )
-- User can view Todos designated for today by Bj session / time_container
-- User can set duration of Bj session (container) for Today  
-- User receives error when total time_est for Todos for a Bj exceed Bj session for Today  
+- User can view Todos designated for container (?? )
+- User can view Todos designated for container by Bj session / time_container
+- User can set duration of Bj session (container) for Container  
+- User receives error when total time_est for Todos for a Bj exceed Bj session for Container  
 
 
 #### V.next
 - User can log in  
 - User can log out  
 - User can duplicate Todo  
-- User can view Todos completed today  
+- User can view Todos completed container  
 - User, at end of Bj work session, can choose whether to carry-over or reset undone todos  

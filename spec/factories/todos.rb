@@ -7,7 +7,7 @@ FactoryGirl.define do
     time_estimate { [5, 15, 30, 60].sample }
 
     brainjuice
-    today
+    container
     user
   end
 end
