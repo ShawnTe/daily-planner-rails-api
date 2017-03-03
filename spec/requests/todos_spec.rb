@@ -11,9 +11,8 @@ RSpec.describe 'Todos API', type: :request do
     before { get '/todos' }
 
     it 'returns todos' do
-      # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json.size).to eq(10)
+      expect(json["data"].size).to eq(10)
     end
 
     it 'returns status code 200' do
@@ -28,7 +27,7 @@ RSpec.describe 'Todos API', type: :request do
     context 'when the record exists' do
       it 'returns the todo' do
         expect(json).not_to be_empty
-        expect(json['id']).to eq(todo_id)
+        expect(json['data']['id'].to_i).to eq(todo_id)
       end
 
       it 'returns status code 200' do
@@ -58,7 +57,7 @@ RSpec.describe 'Todos API', type: :request do
       before { post '/todos', params: valid_attributes }
 
       it 'creates a todo' do
-        expect(json['title']).to eq('Learn Elm')
+        expect(json['data']['attributes']['task']).to eq('Learn Elm')
       end
 
       it 'returns status code 201' do
@@ -75,7 +74,7 @@ RSpec.describe 'Todos API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: Brainjuice can't be blank/)
+          .to match("Validation failed: Time estimate can't be blank")
       end
     end
   end

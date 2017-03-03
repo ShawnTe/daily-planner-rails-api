@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+user = User.create(name: 'Shawn', email: 'me@me.com', password: "12345678")
+
+brainjuice = Brainjuice.create(name: 'focus', status: 'active')
+brainjuice1 = Brainjuice.create(name: 'creative', status: 'active')
+brainjuice2 = Brainjuice.create(name: 'busy', status: 'active')
+
+session = Today.create(time_container: 120, date: Date.today, brainjuice_id: 1)
+session1 = Today.create(time_container: 60, date: Date.today, brainjuice_id: 3)
+session2 = Today.create(time_container: 90, date: Date.today, brainjuice_id: 2)
+
+  todo1 = Todo.create(task: 'Create Rails API', details: 'Access lots of resources to build the thing', time_estimate: 120, status: 'active', brainjuice_id: 1, user_id: 1, today_id: 1)
+todo1 = Todo.create(task: 'Respond to Joe\'s spreadsheet', details: 'Answer all the suspence questions', time_estimate: 15, status: 'active', brainjuice_id: 3, user_id: 1, today_id: 1)
+todo1 = Todo.create(task: 'Write blog post', details: 'Share the exciting adventures of Tech phone screen', time_estimate: 120, status: 'active', brainjuice_id: 1, user_id: 1, today_id: 1)
