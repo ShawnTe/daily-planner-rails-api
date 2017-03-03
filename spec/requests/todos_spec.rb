@@ -9,7 +9,7 @@ RSpec.describe 'Todos API', type: :request do
 
     it 'returns todos' do
       expect(json).not_to be_empty
-      expect(json["data"].size).to eq(10)
+      expect(json['data'].size).to eq(10)
     end
 
     it 'returns status code 200' do
