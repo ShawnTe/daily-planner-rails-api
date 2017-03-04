@@ -69,7 +69,7 @@ RSpec.describe 'Todos API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match("Validation failed: Time estimate can't be blank")
+          .to match('Validation failed: Time estimate can not be blank')
       end
     end
   end

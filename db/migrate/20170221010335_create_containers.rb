@@ -4,6 +4,8 @@ class CreateContainers < ActiveRecord::Migration[5.0]
       t.integer :time_container
       t.date :date
       t.string :status
+      t.references :brainjuice, foreign_key: true
+
 
       t.timestamps
     end

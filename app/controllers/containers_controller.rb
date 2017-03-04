@@ -28,7 +28,7 @@ class ContainersController < ApplicationController
   private
 
     def container_params
-      params.permit(:status, :time_container, :date)
+      params.permit(:status, :time_container, :date, :brainjuice_id)
     end
 
     def set_container

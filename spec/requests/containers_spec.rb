@@ -51,8 +51,7 @@ RSpec.describe 'Container API', type: :request do
       before { post '/containers', params: valid_attributes }
 
       it 'creates a container' do
-        p json
-        expect(json['data']['attributes']['brainjuice_id']).to eq(1)
+        expect(json['data']['relationships']['brainjuice']['data']['id'].to_i).to eq(1)
       end
 
       it 'returns status code 201' do
@@ -61,14 +60,14 @@ RSpec.describe 'Container API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/containers', params: { time_container: 'Foobar' } }
+      before { post '/containers', params: { time_container: 90 } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
 
       it 'returns a validation failure message' do
-        expect(response.body).to match('Validation failed: Time container must be a number')
+        expect(response.body).to match('Validation failed: Brainjuice can\'t be blank')
       end
     end
   end
@@ -77,7 +76,7 @@ RSpec.describe 'Container API', type: :request do
     let(:valid_attributes) { { time_container: 90, brainjuice_id: 2 } }
 
     context 'when the record exists' do
-      before { put '/containers/:id', params: :valid_attributes }
+      before { put "/containers/#{container_id}", params: valid_attributes }
 
       it 'updates the record' do
         expect(response.body).to be_empty
