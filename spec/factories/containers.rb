@@ -4,5 +4,7 @@ FactoryGirl.define do
     status 'open'
 
     time_container { [15, 30, 60, 120].sample }
+
+    brainjuice
   end
 end

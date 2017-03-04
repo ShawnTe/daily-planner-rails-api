@@ -25,7 +25,6 @@ class TodosController < ApplicationController
    head :no_content
  end
 
-
   private
 
     def todo_params

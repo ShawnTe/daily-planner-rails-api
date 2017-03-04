@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'Container API' do
+RSpec.describe 'Container API', type: :request do
   let!(:containers) { create_list(:container, 3) }
-  let(:container_id) { container.first.id }
+  let(:container_id) { containers.first.id }
 
   describe 'GET /containers' do
     before { get "/containers" }
@@ -51,6 +51,7 @@ RSpec.describe 'Container API' do
       before { post '/containers', params: valid_attributes }
 
       it 'creates a container' do
+        p json
         expect(json['data']['attributes']['brainjuice_id']).to eq(1)
       end
 
