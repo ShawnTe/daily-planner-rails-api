@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe 'Todos API', type: :request do
-  let!(:todos) { create_list(:todo, 10) }
-  let(:todo_id) { todos.first.id }
+RSpec.describe 'Container API', type: :request do
+  let!(:containers) { create_list(:container, 3) }
+  let(:container_id) { containers.first.id }
 
-  describe 'GET /todos' do
-    before { get '/todos' }
+  describe 'GET /containers' do
+    before { get "/containers" }
 
-    it 'returns todos' do
+    it 'returns containers' do
       expect(json).not_to be_empty
-      expect(json['data'].size).to eq(10)
+      expect(json['data'].size).to eq(3)
     end
 
     it 'returns status code 200' do
@@ -18,41 +18,40 @@ RSpec.describe 'Todos API', type: :request do
   end
 
   describe 'GET /todos/:id' do
-    before { get "/todos/#{todo_id}" }
+    before { get "/containers/#{container_id}"}
 
     context 'when the record exists' do
-      it 'returns the todo' do
+      it 'returns the container' do
         expect(json).not_to be_empty
-        expect(json['data']['id'].to_i).to eq(todo_id)
+        expect(json['data']['id'].to_i).to eq(container_id)
       end
 
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
       end
     end
-
     context 'when the record does not exist' do
-      let(:todo_id) { 100 }
+      let(:container_id) { 100 }
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/Couldn't find Todo/)
+        expect(response.body).to match(/Couldn't find Container/)
       end
     end
   end
 
-  describe 'POST /todos' do
-    # valid payload
-    let(:valid_attributes) { { task: 'Learn Elm', status: 'active', time_estimate: 5, details: "Learn all the stuff and read things", brainjuice_id: 1 } }
+
+  describe 'POST /containers' do
+    let(:valid_attributes) { { time_container: 120, date: Date.today, brainjuice_id: 1 } }
 
     context 'when the request is valid' do
-      before { post '/todos', params: valid_attributes }
+      before { post '/containers', params: valid_attributes }
 
-      it 'creates a todo' do
-        expect(json['data']['attributes']['task']).to eq('Learn Elm')
+      it 'creates a container' do
+        expect(json['data']['relationships']['brainjuice']['data']['id'].to_i).to eq(1)
       end
 
       it 'returns status code 201' do
@@ -61,24 +60,23 @@ RSpec.describe 'Todos API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/todos', params: { task: 'Foobar' } }
+      before { post '/containers', params: { time_container: 90 } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
 
       it 'returns a validation failure message' do
-        expect(response.body)
-          .to match('Validation failed: Time estimate can\'t be blank')
+        expect(response.body).to match('Validation failed: Brainjuice can\'t be blank')
       end
     end
   end
 
-  describe 'PUT /todos/:id' do
-    let(:valid_attributes) { { status: 'Done' } }
+  describe 'PUT /containers/:id' do
+    let(:valid_attributes) { { time_container: 90, brainjuice_id: 2 } }
 
     context 'when the record exists' do
-      before { put "/todos/#{todo_id}", params: valid_attributes }
+      before { put "/containers/#{container_id}", params: valid_attributes }
 
       it 'updates the record' do
         expect(response.body).to be_empty
@@ -90,8 +88,8 @@ RSpec.describe 'Todos API', type: :request do
     end
   end
 
-  describe 'DELETE /todos/:id' do
-    before { delete "/todos/#{todo_id}" }
+  describe 'DELETE /containers/:id' do
+    before { delete "/containers/#{container_id}" }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
