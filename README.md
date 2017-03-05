@@ -7,24 +7,7 @@ The first version MVP of this project (link above) is a simple app begun at Dev 
 
 The learning objectives for this version include:  
 1. Rails API  
-2. Token-based authentication  
-3. RSpec testing    
-
-
-### Process
-1. Enter Todos (Braindump!) (Pool of Possibilities)  
-2. Clean up Todos (doing anything here??)  
-3. Plan day  
-  - Set Brainjuice session lengths  
-  - Assign Todos to Container by Brainjuice  
-    - receive error if too many  
-    - unassign as needed  
-4. Get to work!  
-  - View only Todos in current Brainjuice session  
-  - Edit Todos if nec  
-  - Mark Todos complete  
-5. End of session wrap up  
-  - Decide if undone todos carry over or return to Pool of Possibilities  
+2. RSpec testing    
 
 
 #### MVP
