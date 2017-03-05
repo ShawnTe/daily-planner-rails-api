@@ -15,15 +15,15 @@ class TodosController < ApplicationController
     json_response(@todo)
   end
 
-  def update
+  def update    # PUT
     @todo.update(todo_params)
     head :no_content
   end
 
-  def destroy
+  def destroy   #DELETE
    @todo.destroy
    head :no_content
- end
+  end
 
   private
 

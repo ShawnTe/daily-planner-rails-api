@@ -69,13 +69,13 @@ RSpec.describe 'Todos API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match('Validation failed: Time estimate can not be blank')
+          .to match('Validation failed: Time estimate can\'t be blank')
       end
     end
   end
 
   describe 'PUT /todos/:id' do
-    let(:valid_attributes) { { task: 'Read Elm things', brainjuice_id: 1 } }
+    let(:valid_attributes) { { status: 'Done' } }
 
     context 'when the record exists' do
       before { put "/todos/#{todo_id}", params: valid_attributes }
