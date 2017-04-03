@@ -6,4 +6,5 @@ class Todo < ApplicationRecord
   validates :task, presence: true
   validates :time_estimate, presence: true
   validates :brainjuice, presence: true
+
 end
