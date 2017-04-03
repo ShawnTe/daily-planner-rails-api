@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: [:show, :update, :destroy]
+  before_action :set_todo, only: [:show, :update, :destroy, :complete]
 
   def index
     @todos = Todo.all
@@ -20,6 +20,11 @@ class TodosController < ApplicationController
     head :no_content
   end
 
+  def complete
+    @todo.update_attribute(:completed, Time.now)
+    head :no_content
+  end
+
   def destroy   #DELETE
    @todo.destroy
    head :no_content
@@ -28,7 +33,7 @@ class TodosController < ApplicationController
   private
 
     def todo_params
-      params.permit(:task, :details, :time_estimate, :status, :brainjuice_id, :user_id, :container_id)
+      params.permit(:task, :details, :time_estimate, :status, :brainjuice_id, :user_id, :container_id, :completed)
     end
 
     def set_todo
