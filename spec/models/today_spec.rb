@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe Today, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Container, type: :model do
+  it { should have_many(:todos) }
 end
