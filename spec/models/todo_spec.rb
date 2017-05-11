@@ -18,7 +18,7 @@ RSpec.describe Todo, type: :model do
   it { should have_db_index(:completed)}
 
   context '.active' do
-    it "is valid with valid attributes" do
+    it "only serves up not-complete todos" do
       todo1 = create(:todo, completed: Time.now)
       todo2 = create(:todo)
       expect(Todo.active).to eq [todo2]
