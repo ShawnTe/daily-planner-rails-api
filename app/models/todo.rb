@@ -7,4 +7,8 @@ class Todo < ApplicationRecord
   validates :time_estimate, presence: true
   validates :brainjuice, presence: true
 
+
+  def self.active
+    Todo.where(completed: nil)
+  end
 end
