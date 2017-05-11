@@ -10,5 +10,7 @@ class CreateTodos < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    add_index :todos, :status
+    add_index :todos, :time_estimate
   end
 end

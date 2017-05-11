@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221020538) do
+ActiveRecord::Schema.define(version: 20170403220008) do
 
   create_table "brainjuices", force: :cascade do |t|
     t.string   "name"
@@ -19,14 +19,17 @@ ActiveRecord::Schema.define(version: 20170221020538) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "todays", force: :cascade do |t|
-    t.integer  "brainjuice_id"
+  create_table "containers", force: :cascade do |t|
     t.integer  "time_container"
     t.date     "date"
     t.string   "status"
+    t.integer  "brainjuice_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["brainjuice_id"], name: "index_todays_on_brainjuice_id"
+    t.index ["brainjuice_id"], name: "index_containers_on_brainjuice_id"
+    t.index ["date"], name: "index_containers_on_date"
+    t.index ["status"], name: "index_containers_on_status"
+    t.index ["time_container"], name: "index_containers_on_time_container"
   end
 
   create_table "todos", force: :cascade do |t|
@@ -38,7 +41,11 @@ ActiveRecord::Schema.define(version: 20170221020538) do
     t.integer  "brainjuice_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "container_id"
+    t.datetime "completed"
     t.index ["brainjuice_id"], name: "index_todos_on_brainjuice_id"
+    t.index ["status"], name: "index_todos_on_status"
+    t.index ["time_estimate"], name: "index_todos_on_time_estimate"
     t.index ["user_id"], name: "index_todos_on_user_id"
   end
 
@@ -49,6 +56,8 @@ ActiveRecord::Schema.define(version: 20170221020538) do
     t.string   "token"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name"
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
