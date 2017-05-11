@@ -2,7 +2,7 @@ class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :update, :destroy, :complete]
 
   def index
-    @todos = Todo.all
+    @todos = Todo.active
     json_response(@todos)
   end
 
